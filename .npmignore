@@ -1,0 +1,8 @@
+.jshintrc
+.jshintignore
+doc
+test
+.atom-build.json
+.beans
+.cache
+.git
