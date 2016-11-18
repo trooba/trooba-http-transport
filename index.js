@@ -8,8 +8,8 @@ var httpfy = require('trooba-http-api');
 
 module.exports = function httpTransportFactory(config) {
 
-    function transport(requestContext, responseContext) {
-        var options = _.merge(requestContext.options || {}, config);
+    function transport(requestContext, reply) {
+        var options = _.merge(requestContext.request || {}, config);
         var genericTimeout = options.timeout;
 
         if (options.connectTimeout) {
@@ -22,17 +22,14 @@ module.exports = function httpTransportFactory(config) {
             options.pathname = options.path;
         }
 
-        var url = UrlUtils.format(requestContext.options);
+        var url = UrlUtils.format(options);
 
         Wreck.request(options.method, url, options, function onResponse(err, response) {
             /* handle err if it exists, in which case res will be undefined */
             if (err) {
-                responseContext.next(err);
+                reply(err);
                 return;
             }
-
-            responseContext.statusCode = response.statusCode;
-            responseContext.response = response;
 
             // buffer the response stream
             options.timeout = genericTimeout;
@@ -41,7 +38,7 @@ module.exports = function httpTransportFactory(config) {
             }
             Wreck.read(response, options, function onResponseRead(err, body) {
                 response.body = body;
-                responseContext.next(err, response);
+                reply(err, response);
             });
         });
     }
