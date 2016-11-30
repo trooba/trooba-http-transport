@@ -28,11 +28,11 @@
   "devDependencies": {
     "mocha": "^3.1.2",
     "nock": "^9.0.2",
-    "trooba": "file:../trooba"
+    "trooba": "^0"
   },
   "dependencies": {
     "lodash": "^4.16.6",
-    "trooba-http-api": "file:../trooba-http-api",
+    "trooba-http-api": "^1",
     "wreck": "^10.0.0"
   }
 }
