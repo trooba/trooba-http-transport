@@ -5,7 +5,7 @@ var Http = require('http');
 var Trooba = require('trooba');
 var nock = require('nock');
 
-var httpTransportFactory = require('..');
+var httpTransport = require('..');
 
 describe(__filename, function () {
     after(function () {
@@ -18,11 +18,11 @@ describe(__filename, function () {
             .reply(200, 'some text');
 
         var client = Trooba
-            .transport(httpTransportFactory, {
+            .use(httpTransport, {
                 protocol: 'http:',
                 hostname: 'www.trooba.xc'
             })
-            .create({
+            .build('client:default', {
                 foo: 'bar'
             });
 
@@ -38,11 +38,11 @@ describe(__filename, function () {
 
     it('should handle unknwon host', function (done) {
         var client = Trooba
-            .transport(httpTransportFactory, {
+            .use(httpTransport, {
                 protocol: 'http:',
                 hostname: 'sss'
             })
-            .create({
+            .build('client:default', {
                 foo: 'bar'
             });
 
@@ -58,12 +58,12 @@ describe(__filename, function () {
     describe('should handle connect timeout', function () {
         it('test', function (done) {
             var client = Trooba
-                .transport(httpTransportFactory, {
+                .use(httpTransport, {
                     protocol: 'http:',
                     hostname: 'localhost',
                     connectTimeout: 1
                 })
-                .create({
+                .build('client:default', {
                     foo: 'bar'
                 });
 
@@ -100,13 +100,13 @@ describe(__filename, function () {
 
         it('test', function (done) {
             var client = Trooba
-                .transport(httpTransportFactory, {
+                .use(httpTransport, {
                     protocol: 'http:',
                     hostname: 'localhost',
                     port: port,
                     socketTimeout: 1
                 })
-                .create({
+                .build('client:default', {
                     foo: 'bar'
                 });
 
@@ -126,11 +126,11 @@ describe(__filename, function () {
             .reply(404, 'some text');
 
         var client = Trooba
-            .transport(httpTransportFactory, {
+            .use(httpTransport, {
                 protocol: 'http:',
                 hostname: 'www.trooba.xc'
             })
-            .create({
+            .build('client:default', {
                 foo: 'bar'
             });
 
@@ -150,11 +150,11 @@ describe(__filename, function () {
             .reply(500, 'some text');
 
         var client = Trooba
-            .transport(httpTransportFactory, {
+            .use(httpTransport, {
                 protocol: 'http:',
                 hostname: 'www.trooba.xc'
             })
-            .create({
+            .build('client:default', {
                 foo: 'bar'
             });
 
@@ -176,12 +176,12 @@ describe(__filename, function () {
             });
 
         var client = Trooba
-            .transport(httpTransportFactory, {
+            .use(httpTransport, {
                 protocol: 'http:',
                 hostname: 'www.trooba.xc',
                 json: true
             })
-            .create();
+            .build('client:default');
 
         client.get({
             q: 'nike'
@@ -203,12 +203,12 @@ describe(__filename, function () {
             });
 
         var client = Trooba
-            .transport(httpTransportFactory, {
+            .use(httpTransport, {
                 protocol: 'http:',
                 hostname: 'www.trooba.xc',
                 json: true
             })
-            .create();
+            .build('client:default');
 
         client.get({
             q: 'nike'
@@ -233,12 +233,12 @@ describe(__filename, function () {
             });
 
         var client = Trooba
-            .transport(httpTransportFactory, {
+            .use(httpTransport, {
                 protocol: 'http:',
                 hostname: 'www.trooba.xc',
                 json: true
             })
-            .create();
+            .build('client:default');
 
         client.post({
             q: 'nike'
@@ -263,12 +263,12 @@ describe(__filename, function () {
             });
 
         var client = Trooba
-            .transport(httpTransportFactory, {
+            .use(httpTransport, {
                 protocol: 'http:',
                 hostname: 'www.trooba.xc',
                 json: true
             })
-            .create();
+            .build('client:default');
 
         client.put({
             q: 'nike'
@@ -295,12 +295,12 @@ describe(__filename, function () {
             });
 
         var client = Trooba
-            .transport(httpTransportFactory, {
+            .use(httpTransport, {
                 protocol: 'http:',
                 hostname: 'www.trooba.xc',
                 json: true
             })
-            .create();
+            .build('client:default');
 
         client.put({
             q: 'nike'
@@ -327,12 +327,12 @@ describe(__filename, function () {
             });
 
         var client = Trooba
-            .transport(httpTransportFactory, {
+            .use(httpTransport, {
                 protocol: 'http:',
                 hostname: 'www.trooba.xc',
                 json: true
             })
-            .create();
+            .build('client:default');
 
         client.patch({
             q: 'nike'
@@ -349,11 +349,11 @@ describe(__filename, function () {
 
     it.skip('readme example', function (done) {
         var client = require('trooba')
-            .transport(httpTransportFactory, {
+            .use(httpTransport, {
                 protocol: 'http:',
                 hostname: 'www.google.com'
             })
-            .create();
+            .build('client:default');
 
         client.get({
             q: 'nike'
