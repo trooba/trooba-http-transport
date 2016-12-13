@@ -6,10 +6,9 @@ var _ = require('lodash');
 
 var httpfy = require('trooba-http-api');
 
-module.exports = function httpTransportFactory(config) {
-
-    function transport(requestContext, reply) {
-        var options = _.merge(requestContext.request || {}, config);
+module.exports = function transport(pipe, config) {
+    pipe.on('request', function onRequest(request) {
+        var options = _.merge(request || {}, config);
         var genericTimeout = options.timeout;
 
         if (options.connectTimeout) {
@@ -27,7 +26,7 @@ module.exports = function httpTransportFactory(config) {
         Wreck.request(options.method, url, options, function onResponse(err, response) {
             /* handle err if it exists, in which case res will be undefined */
             if (err) {
-                reply(err);
+                pipe.throw(err);
                 return;
             }
 
@@ -37,11 +36,15 @@ module.exports = function httpTransportFactory(config) {
                 options.timeout = options.socketTimeout;
             }
             Wreck.read(response, options, function onResponseRead(err, body) {
+                if (err) {
+                    pipe.throw(err);
+                    return;
+                }
                 response.body = body;
-                reply(err, response);
+                pipe.respond(response);
             });
         });
-    }
+    });
 
-    return httpfy(transport);
+    httpfy(pipe);
 };

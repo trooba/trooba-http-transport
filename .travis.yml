@@ -1,0 +1,7 @@
+node_js:
+- "4"
+- "6"
+- "7"
+language: node_js
+script: "npm test"
+sudo: false
