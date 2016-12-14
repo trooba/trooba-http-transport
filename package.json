@@ -1,6 +1,6 @@
 {
   "name": "trooba-http-transport",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "HTTP transport for trooba pipeline",
   "main": "index.js",
   "directories": {
