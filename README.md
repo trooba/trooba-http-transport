@@ -31,7 +31,7 @@ require('trooba')
         connectTimeout: 100,
         socketTimeout: 1000
     })
-    .build()
+    .build('client:default')
     .get({
         q: 'nike'
     })
