@@ -22,7 +22,7 @@ describe(__filename, function () {
                 protocol: 'http:',
                 hostname: 'www.trooba.xc'
             })
-            .build('client:default', {
+            .build().create('client:default', {
                 foo: 'bar'
             });
 
@@ -42,7 +42,7 @@ describe(__filename, function () {
                 protocol: 'http:',
                 hostname: 'sss'
             })
-            .build('client:default', {
+            .build().create('client:default', {
                 foo: 'bar'
             });
 
@@ -63,7 +63,7 @@ describe(__filename, function () {
                     hostname: 'localhost',
                     connectTimeout: 1
                 })
-                .build('client:default', {
+                .build().create('client:default', {
                     foo: 'bar'
                 });
 
@@ -106,7 +106,7 @@ describe(__filename, function () {
                     port: port,
                     socketTimeout: 1
                 })
-                .build('client:default', {
+                .build().create('client:default', {
                     foo: 'bar'
                 });
 
@@ -130,7 +130,7 @@ describe(__filename, function () {
                 protocol: 'http:',
                 hostname: 'www.trooba.xc'
             })
-            .build('client:default', {
+            .build().create('client:default', {
                 foo: 'bar'
             });
 
@@ -154,7 +154,7 @@ describe(__filename, function () {
                 protocol: 'http:',
                 hostname: 'www.trooba.xc'
             })
-            .build('client:default', {
+            .build().create('client:default', {
                 foo: 'bar'
             });
 
@@ -181,7 +181,7 @@ describe(__filename, function () {
                 hostname: 'www.trooba.xc',
                 json: true
             })
-            .build('client:default');
+            .build().create('client:default');
 
         client.get({
             q: 'nike'
@@ -208,7 +208,7 @@ describe(__filename, function () {
                 hostname: 'www.trooba.xc',
                 json: true
             })
-            .build('client:default');
+            .build().create('client:default');
 
         client.get({
             q: 'nike'
@@ -238,7 +238,7 @@ describe(__filename, function () {
                 hostname: 'www.trooba.xc',
                 json: true
             })
-            .build('client:default');
+            .build().create('client:default');
 
         client.post({
             q: 'nike'
@@ -268,7 +268,7 @@ describe(__filename, function () {
                 hostname: 'www.trooba.xc',
                 json: true
             })
-            .build('client:default');
+            .build().create('client:default');
 
         client.put({
             q: 'nike'
@@ -300,7 +300,7 @@ describe(__filename, function () {
                 hostname: 'www.trooba.xc',
                 json: true
             })
-            .build('client:default');
+            .build().create('client:default');
 
         client.put({
             q: 'nike'
@@ -332,7 +332,7 @@ describe(__filename, function () {
                 hostname: 'www.trooba.xc',
                 json: true
             })
-            .build('client:default');
+            .build().create('client:default');
 
         client.patch({
             q: 'nike'
@@ -353,7 +353,7 @@ describe(__filename, function () {
                 protocol: 'http:',
                 hostname: 'www.google.com'
             })
-            .build('client:default');
+            .build().create('client:default');
 
         client.get({
             q: 'nike'
