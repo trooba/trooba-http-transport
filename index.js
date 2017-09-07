@@ -80,7 +80,7 @@ function addClientAPI(pipe, config) {
 }
 
 function addServerAPI(pipe, config) {
-    const contextProvider = pipe.store.contextProvider;
+    const contextProvider = pipe.store && pipe.store.contextProvider;
     pipe.set('server:default', function serverFactory(pipe) {
         return {
             listen(callback) {
