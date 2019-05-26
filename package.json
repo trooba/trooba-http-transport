@@ -27,7 +27,7 @@
   },
   "homepage": "https://github.com/trooba/trooba-http-transport#readme",
   "devDependencies": {
-    "async": "^2.5.0",
+    "async": "^3.0.1",
     "istanbul": "^0.4.5",
     "mocha": "^3.1.2",
     "nock": "^9.0.2",
