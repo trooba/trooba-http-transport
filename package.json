@@ -34,7 +34,7 @@
     "trooba": "^2"
   },
   "dependencies": {
-    "lodash": "^4.16.6",
+    "lodash": "^4.17.15",
     "trooba-http-api": "^2",
     "wreck": "^12.5.0"
   },
