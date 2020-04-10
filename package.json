@@ -35,7 +35,7 @@
   },
   "dependencies": {
     "lodash": "^4.16.6",
-    "trooba-http-api": "^2",
+    "trooba-http-api": "^2.1.1",
     "wreck": "^12.5.0"
   },
   "publishConfig": {
